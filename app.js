@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
