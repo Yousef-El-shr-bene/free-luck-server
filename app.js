@@ -38,7 +38,7 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/api/auth', (req, res) => {
   const enteredPassword = req.query.password;
