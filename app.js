@@ -18,6 +18,15 @@ const port = 3000;
 const { spotValidator } = require('./proses');
 const Spot = require('./models/spotModel');
 
+app.use(cors({
+    origin: [
+        'http://localhost:5173', // للسماح بالطلبات أثناء التطوير المحلي
+        'https://free-luck.vercel.app' // للسماح بالطلبات من واجهة المستخدم المرفوعة
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true // مهم إذا كنت تستخدم Cookies أو Sessions
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
