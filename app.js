@@ -52,10 +52,12 @@ function requireAdmin(req, res, next) {
 
 app.get('/api/auth', (req, res) => {
   const enteredPassword = req.query.password;
-  const configuredPassword = process.env.PASSWORD || process.env.password || 'admin123';
+  const configuredPassword = process.env.PASSWORD ;
 
   if (enteredPassword === configuredPassword) {
     app.locals.token = setAdminToken();
+    console.log(req.query.password,"req.query.password");
+    
     res.cookie('token', app.locals.token, { httpOnly: true, sameSite: 'lax', path: '/' });
     return res.json({ ok: true, message: 'Admin token set' });
   }
